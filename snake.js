@@ -1,3 +1,5 @@
+// Base code inspired from Kenny Yip Coding: https://www.youtube.com/watch?v=baBq5GAL0_U
+
 //board variables
 var blockSize = 25;
 var rows = 20;
