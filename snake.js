@@ -33,6 +33,7 @@ window.onload = function () {
 };
 
 function update() {
+  document.getElementById("score").innerHTML = snakeBody.length;
   if (gameOver) {
     return;
   }
