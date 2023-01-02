@@ -59,10 +59,11 @@ function update() {
     snakeBody[0] = [snakeX, snakeY];
   }
 
-  context.fillStyle = "lime";
+  context.fillStyle = "orange";
   snakeX += velocityX * blockSize;
   snakeY += velocityY * blockSize;
   context.fillRect(snakeX, snakeY, blockSize, blockSize);
+  context.fillStyle = "lime";
   for (let i = 0; i < snakeBody.length; i++) {
     context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
   }
