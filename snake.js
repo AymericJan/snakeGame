@@ -22,6 +22,10 @@ var foodY;
 
 var gameOver = false;
 
+//dir
+var currentDirection;
+var nextDirection;
+
 window.onload = function () {
   board = document.getElementById("board");
   board.height = rows * blockSize;
@@ -60,6 +64,7 @@ function update() {
   }
 
   context.fillStyle = "orange";
+  updateVelocity();
   snakeX += velocityX * blockSize;
   snakeY += velocityY * blockSize;
   context.fillRect(snakeX, snakeY, blockSize, blockSize);
@@ -88,19 +93,32 @@ function update() {
 }
 
 function changeDirection(e) {
-  if (e.code == "ArrowUp" && velocityY != 1) {
+  if (e.code == "ArrowUp" && currentDirection != "down") {
+    nextDirection = "up";
+  } else if (e.code == "ArrowDown" && currentDirection != "up") {
+    nextDirection = "down";
+  } else if (e.code == "ArrowLeft" && currentDirection != "right") {
+    nextDirection = "left";
+  } else if (e.code == "ArrowRight" && currentDirection != "left") {
+    nextDirection = "right";
+  }
+}
+
+function updateVelocity() {
+  if (nextDirection == "up") {
     velocityX = 0;
     velocityY = -1;
-  } else if (e.code == "ArrowDown" && velocityY != -1) {
+  } else if (nextDirection == "down") {
     velocityX = 0;
     velocityY = 1;
-  } else if (e.code == "ArrowLeft" && velocityX != 1) {
+  } else if (nextDirection == "left") {
     velocityX = -1;
     velocityY = 0;
-  } else if (e.code == "ArrowRight" && velocityX != -1) {
+  } else if (nextDirection == "right") {
     velocityX = 1;
     velocityY = 0;
   }
+  currentDirection = nextDirection;
 }
 
 function placeFood() {
