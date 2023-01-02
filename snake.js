@@ -70,9 +70,9 @@ function update() {
   // Game over conditions
   if (
     snakeX < 0 ||
-    snakeX > cols * blockSize ||
+    snakeX > cols * blockSize - 1 ||
     snakeY < 0 ||
-    snakeY > rows * blockSize
+    snakeY > rows * blockSize - 1
   ) {
     gameOver = true;
     alert("Game Over");
