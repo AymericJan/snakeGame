@@ -124,4 +124,19 @@ function updateVelocity() {
 function placeFood() {
   foodX = Math.floor(Math.random() * cols) * blockSize;
   foodY = Math.floor(Math.random() * rows) * blockSize;
+  while (checkFoodNotOnSnake() == false) {
+    foodX = Math.floor(Math.random() * cols) * blockSize;
+    foodY = Math.floor(Math.random() * rows) * blockSize;
+  }
+}
+
+function checkFoodNotOnSnake() {
+  for (let i = 0; i < snakeBody.length; i++) {
+    if (foodX == snakeBody[i][0] && foodY == snakeBody[i][1]) {
+      isFoodOk = false;
+      console.log("wrong");
+      return false;
+    }
+  }
+  return true;
 }
